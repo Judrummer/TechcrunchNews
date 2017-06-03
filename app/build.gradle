@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.github.judrummer.techcrunchnews"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    productFlavors {
+        mock {
+            applicationIdSuffix = ".mock"
+        }
+        prod {
+
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile(
+            "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            "com.android.support:appcompat-v7:$supportLibraryVersion",
+            "com.android.support:recyclerview-v7:$supportLibraryVersion",
+            "com.android.support:support-v4:$supportLibraryVersion",
+            "com.android.support:cardview-v7:$supportLibraryVersion",
+            "com.android.support:design:$supportLibraryVersion",
+            "com.google.code.gson:gson:$gsonVersion",
+            "io.reactivex.rxjava2:rxjava:$rxJavaVersion",
+            "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            "com.squareup.okhttp3:okhttp:$okhttpVersion",
+            "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+            "org.parceler:parceler-api:$parcelerVersion",
+            "com.github.judrummer.jxadapter:jxadapter:$jxAdapterVersion",
+            "com.github.bumptech.glide:glide:$glideVersion",
+    )
+
+    annotationProcessor "org.parceler:parceler:$parcelerVersion"
+
+    testCompile(
+            "junit:junit:$junitVersion",
+            "org.hamcrest:hamcrest-all:$hamcrestVersion",
+            "org.mockito:mockito-core:$mockitoVersion")
+
+    androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$espressoVersion", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+}
+
+
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.6.3'
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+
