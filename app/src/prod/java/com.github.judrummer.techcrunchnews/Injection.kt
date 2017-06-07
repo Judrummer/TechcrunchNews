@@ -5,8 +5,6 @@ import com.github.judrummer.techcrunchnews.data.repository.NewsRepositoryImpl
 
 object Injection {
 
-    fun provideNewsRepository(): NewsRepository {
-        return NewsRepositoryImpl()
-    }
+    fun provideNewsRepository(): NewsRepository = NewsRepositoryImpl()
 
 }

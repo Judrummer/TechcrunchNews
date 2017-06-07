@@ -48,17 +48,18 @@ dependencies {
             "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
             "com.squareup.okhttp3:okhttp:$okhttpVersion",
             "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
-            "org.parceler:parceler-api:$parcelerVersion",
             "com.github.judrummer.jxadapter:jxadapter:$jxAdapterVersion",
             "com.github.bumptech.glide:glide:$glideVersion",
     )
 
-    annotationProcessor "org.parceler:parceler:$parcelerVersion"
-
     testCompile(
             "junit:junit:$junitVersion",
-            "org.hamcrest:hamcrest-all:$hamcrestVersion",
-            "org.mockito:mockito-core:$mockitoVersion")
+            "org.hamcrest:hamcrest-all:$hamcrestVersion"
+    )
+
+    testCompile "com.nhaarman:mockito-kotlin:$mockitoKotlinVersion", {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib'
+    }
 
     androidTestCompile "com.android.support.test.espresso:espresso-core:$espressoVersion", {
         exclude group: 'com.android.support', module: 'support-annotations'

@@ -2,7 +2,9 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="item_news_title_padding">8dp</dimen>
-    <dimen name="item_news_title_text_size">16sp</dimen>
+    <dimen name="item_news_description_padding">8dp</dimen>
+    <dimen name="item_news_title_text_size">20sp</dimen>
+    <dimen name="item_news_description_text_size">16sp</dimen>
+    <dimen name="item_news_card_margin">8dp</dimen>
     <dimen name="item_news_root_padding">8dp</dimen>
-    <dimen name="item_news_image_size">75dp</dimen>
 </resources>

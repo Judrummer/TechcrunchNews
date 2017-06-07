@@ -27,13 +27,12 @@ allprojects {
         jxAdapterVersion = "0.5.0"
         retrofitVersion = "2.2.0"
         okhttpVersion = "3.7.0"
-        parcelerVersion = '1.1.6'
         glideVersion = '3.6.1'
 
         //test version
         junitVersion = '4.12'
         espressoVersion = '2.2.2'
-        mockitoVersion = '2.7.13'
+        mockitoKotlinVersion = '1.5.0'
         hamcrestVersion = '1.3'
 
     }

@@ -7,10 +7,10 @@ import java.util.*
  */
 
 data class NewsEntity(
-        val author:String,
-        val title:String,
-        val description:String,
-        val url:String,
-        val urlToImage:String,
-        val publishedAt:Date
+        val author: String = "",
+        val title: String = "",
+        val description: String = "",
+        val url: String = "",
+        val urlToImage: String = "",
+        val publishedAt: Date = Date()
 )

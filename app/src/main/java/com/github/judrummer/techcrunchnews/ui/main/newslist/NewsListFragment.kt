@@ -14,7 +14,6 @@ import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.fragment_news_list.*
 import kotlinx.android.synthetic.main.item_news.view.*
-import org.parceler.Parcels
 
 class NewsListFragment : BaseFragment(), NewsListViewIntent {
 
@@ -31,6 +30,7 @@ class NewsListFragment : BaseFragment(), NewsListViewIntent {
     val newsListAdapter = JxAdapter(JxViewHolder<NewsItem>(R.layout.item_news) { position, item ->
         itemView.apply {
             tvItemNewsTitle.text = item.title
+            tvItemNewsDescription.text = item.description
             ivItemNewsImage.setImageUrl(item.urlToImage)
         }
     })
@@ -54,7 +54,7 @@ class NewsListFragment : BaseFragment(), NewsListViewIntent {
         if (savedInstanceState == null) {
             refreshSubject.onNext(Unit)
         } else {
-            val state: NewsListState = Parcels.unwrap(savedInstanceState.getParcelable(NewsListFragment::class.java.simpleName))
+            val state: NewsListState = savedInstanceState.getParcelable(NewsListFragment::class.java.simpleName)
             viewModel.restoreState(state)
             if (state.loading) refreshSubject.onNext(Unit)
         }
@@ -62,7 +62,7 @@ class NewsListFragment : BaseFragment(), NewsListViewIntent {
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState?.putParcelable(NewsListFragment::class.java.simpleName, Parcels.wrap(viewModel.saveState()))
+        outState?.putParcelable(NewsListFragment::class.java.simpleName, viewModel.saveState())
     }
 
     override fun onDestroyView() {

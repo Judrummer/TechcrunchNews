@@ -6,7 +6,6 @@ import com.github.judrummer.techcrunchnews.data.repository.NewsRepository
 import io.reactivex.Observable
 import java.util.*
 
-
 class NewsRepositoryMock : NewsRepository {
 
     override fun getNewsList(): Observable<List<NewsEntity>> {
